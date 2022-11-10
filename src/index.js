@@ -63,9 +63,6 @@ function formatDate(newDate) {
 
 console.log(formatDate(new Date()));
 
-let currentDate = document.querySelector("#date");
-currentDate.innerHTML = formatDate(new Date());
-
 function updateCity(event) {
   event.preventDefault();
   let place = document.querySelector("#city");
@@ -85,12 +82,6 @@ function showFahrenheit(event) {
   let temperature = document.querySelector("#actual-temp");
   temperature.innerHTML = `79°`;
 }
-
-let celsiusTemp = document.querySelector("#celsius-link");
-celsiusTemp.addEventListener("click", showCelsius);
-
-let fahrenheitTemp = document.querySelector("#fahrenheit-link");
-fahrenheitTemp.addEventListener("click", showFahrenheit);
 
 function displayWeather(response) {
   document.querySelector("#search-city").innerHTML = response.data.name;
@@ -123,8 +114,17 @@ function getLocation(event) {
   navigator.geolocation.getCurrentPosition(findLocation);
 }
 
+let currentDate = document.querySelector("#date");
+currentDate.innerHTML = formatDate(new Date());
+
 let searchButton = document.querySelector("#search");
 searchButton.addEventListener("submit", searchSubmit);
 
 let currentLocation = document.querySelector("#current-location");
 currentLocation.addEventListener("click", getLocation);
+
+let celsiusTemp = document.querySelector("#celsius-link");
+celsiusTemp.addEventListener("click", showCelsius);
+
+let fahrenheitTemp = document.querySelector("#fahrenheit-link");
+fahrenheitTemp.addEventListener("click", showFahrenheit);
