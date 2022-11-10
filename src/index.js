@@ -56,7 +56,7 @@ function formatDate(newDate) {
   }
   console.log("Current Time: " + hour + prepand + ":" + minute + ":" + second);
 
-  let today = `${day}, ${month} ${date} </br> ${hour}:${minute} ${prepand}`;
+  let today = ${day}, ${month} ${date} </br> ${hour}:${minute} ${prepand};
 
   return today;
 }
@@ -67,7 +67,7 @@ function updateCity(event) {
   event.preventDefault();
   let place = document.querySelector("#city");
   let city = document.querySelector("#search-city");
-  city.innerHTML = `${place.value}`;
+  city.innerHTML = ${place.value};
 }
 
 let showCity = document.querySelector("#city-search");
@@ -75,12 +75,12 @@ showCity.addEventListener("submit", updateCity);
 
 function showCelsius(event) {
   let temperature = document.querySelector("#actual-temp");
-  temperature.innerHTML = `26°`;
+  temperature.innerHTML = 26°;
 }
 
 function showFahrenheit(event) {
   let temperature = document.querySelector("#actual-temp");
-  temperature.innerHTML = `79°`;
+  temperature.innerHTML = 79°;
 }
 
 function displayWeather(response) {
@@ -90,9 +90,9 @@ function displayWeather(response) {
 }
 
 function citySearch(city) {
-  let apiKey = `a7775f651d2a52140ceaa2d49494f5ca`;
-  let units = `imperial`;
-  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=${units}`;
+  let apiKey = a7775f651d2a52140ceaa2d49494f5ca;
+  let units = imperial;
+  let apiUrl = https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=${units};
   axios.get(apiUrl).then(displayWeather);
 }
 
@@ -103,9 +103,9 @@ function searchSubmit(event) {
 }
 
 function findLocation(position) {
-  let apiKey = `a7775f651d2a52140ceaa2d49494f5ca`;
-  let units = `imperial`;
-  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${position.coords.latitude}&lon=${position.coords.longitude}&appid=${apiKey}&units=${units}`;
+  let apiKey = a7775f651d2a52140ceaa2d49494f5ca;
+  let units = imperial;
+  let apiUrl = https://api.openweathermap.org/data/2.5/weather?lat=${position.coords.latitude}&lon=${position.coords.longitude}&appid=${apiKey}&units=${units};
   axios.get(apiUrl).then(displayWeather);
 }
 
