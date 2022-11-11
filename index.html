@@ -6,10 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400;500&family=Source+Sans+Pro:wght@300;400;600&display=swap"
-      rel="stylesheet"
-    />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400;500&family=Spline+Sans+Mono:wght@300;400&display=swap" rel="stylesheet"> 
     <script
       src="https://kit.fontawesome.com/6a6ade7799.js"
       crossorigin="anonymous"
@@ -38,46 +37,46 @@
         <div class="current">
           <h1 id="search-city">Dallas</h1>
           <h2>
-            <span class="current-temp" id="actual-temp"
+             <i class="fa-solid fa-cloud-sun" id="emoji"></i><span class="current-temp" id="actual-temp"
               >79°</span>
           </h2>
-          <i class="fa-solid fa-cloud-sun" id="emoji"></i>
-            <p class= "tempchange" ><a href="#" id="celsius-link">°C </a>|
+          <p class= "units" ><a href="#" id="celsius-link">°C </a>|
               <a href="#" id="fahrenheit-link">°F </a>
             </span></p>
-          <p class="temp">
+            </div>
+            </div>
+          <p class="weather">
             Partly Cloudy
             <br />
             H:87° L:63°
           </p>
         </div>
-        <p class="daily-info">
-          <span id="date">Friday</span>
-          <br />
-          Precipitation: 0%
-          <br />
-          Humidity: 38%
-          <br />
-          Wind 6mph
-        </p>
-        <p class="sun">
-          Sunrise: 07:26am
-          <br />
-          Sunset: 07:02pm
-        </p>
-        <p class="moon">
-          Moonrise: 6:12pm
-          <br />
-          Moonset: 4:55am
-          <br />
-          Waxing Gibbous
-        </p>
+    <hr />
+    <div class="current-container">
+      <div class="daily-info">
+        <div class="row">
+          <div class="col" id="d1">
+            Humidity: 30%
+            <br />
+            Windspeed: 6MPH NE
+          </div>
+          <div class="col" id="d2">
+            Sunrise: 07:26AM
+            <br />
+            Sunset: 07:02PM
+          </div>
+          <div class="col" id="d3">
+            Moonphase:
+            <br />
+            Waxing Gibbous
+          </div>
+        </div>
       </div>
     </div>
     <hr />
     <div class="weekly-container">
       <div class="weekly">
-        <h2>Weekly Forecast</h2>
+        <h2>5-Day Forecast</h2>
         <div class="row">
           <div class="col">
             Today
@@ -113,20 +112,6 @@
             <i class="fa-solid fa-cloud-sun"></i>
             <br />
             H:86° L:66°
-          </div>
-          <div class="col">
-            Wednesday
-            <br />
-            <i class="fa-solid fa-sun"></i>
-            <br />
-            H:88° L:67°
-          </div>
-          <div class="col">
-            Thursday
-            <br />
-            <i class="fa-solid fa-sun"></i>
-            <br />
-            H:77° L:61°
           </div>
         </div>
       </div>
