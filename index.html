@@ -9,10 +9,6 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400;500&family=Spline+Sans+Mono:wght@300;400&display=swap" rel="stylesheet"> 
-    <script
-      src="https://kit.fontawesome.com/6a6ade7799.js"
-      crossorigin="anonymous"
-    ></script>
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"
       rel="stylesheet"
@@ -33,20 +29,24 @@
           <input type="button" class="btn" value="Current Location📍" id="current-location" />
         </form>
       </div>
+      <br>
+      
       <div class="current-city">
         <div class="current">
           <h1 id="search-city">Dallas</h1>
+        
+          <p class="date">Saturday, November 12, 2022 | 6:36PM<p>
           <h2>
-             <i class="fa-solid fa-cloud-sun" id="emoji"></i><span class="current-temp" id="actual-temp"
+             <img src="#" alt="" id="condition"></i><span class="current-temp" id="actual-temp"
               >79°</span>
           </h2>
-          <p class= "units" ><a href="#" id="celsius-link">°C </a>|
-              <a href="#" id="fahrenheit-link">°F </a>
+          <p class= "units" ><a href="#" id="celsius"> °C </a>|
+              <a href="#" id="fahrenheit">°F </a>
             </span></p>
             </div>
             </div>
           <p class="weather">
-            Partly Cloudy
+            <span id="description">Partly Cloudy</span>
             <br />
             H:87° L:63°
           </p>
@@ -56,9 +56,9 @@
       <div class="daily-info">
         <div class="row">
           <div class="col" id="d1">
-            Humidity: 30%
+            Humidity: <span id="humidity"></span>%
             <br />
-            Windspeed: 6MPH NE
+            Windspeed: <span id="windspeed"></span>MPH
           </div>
           <div class="col" id="d2">
             Sunrise: 07:26AM
