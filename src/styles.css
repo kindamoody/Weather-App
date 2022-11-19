@@ -101,6 +101,18 @@ h2,
   font-family: "Spline Sans Mono", monospace;
 }
 
+#condition {
+  display: inline;
+  position: relative;
+  top: -15px;
+}
+
+.degrees {
+  display: inline;
+  position: relative;
+  top: -30px;
+}
+
 hr {
   display: block;
   margin: 20px auto;

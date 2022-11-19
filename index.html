@@ -38,7 +38,7 @@
           <p class="date">Saturday, November 12, 2022 | 6:36PM<p>
           <h2>
              <img src="#" alt="" id="condition"></i><span class="current-temp" id="actual-temp"
-              >79°</span>
+              >°</span><span class="degrees">°</span>
           </h2>
           <p class= "units" ><a href="#" id="celsius"> °C </a>|
               <a href="#" id="fahrenheit">°F </a>
@@ -46,9 +46,9 @@
             </div>
             </div>
           <p class="weather">
-            <span id="description">Partly Cloudy</span>
+            <span id="description"></span>
             <br />
-            H:87° L:63°
+            High: <span id="daily-high"></span>° | Low: <span id="daily-low"></span>°
           </p>
         </div>
     <hr />
@@ -61,9 +61,9 @@
             Windspeed: <span id="windspeed"></span>MPH
           </div>
           <div class="col" id="d2">
-            Sunrise: 07:26AM
+            Sunrise:<span id="sunrise"></span>
             <br />
-            Sunset: 07:02PM
+            Sunset:<span id="sunset"></span>
           </div>
           <div class="col" id="d3">
             Moonphase:
@@ -74,48 +74,8 @@
       </div>
     </div>
     <hr />
-    <div class="weekly-container">
-      <div class="weekly">
-        <h2>5-Day Forecast</h2>
-        <div class="row">
-          <div class="col">
-            Today
-            <br />
-            <i class="fa-solid fa-cloud-sun"></i>
-            <br />
-            H:87° L:63°
-          </div>
-          <div class="col">
-            Saturday
-            <br />
-            <i class="fa-solid fa-sun"></i>
-            <br />
-            H:82° L:63°
-          </div>
-          <div class="col">
-            Sunday
-            <br />
-            <i class="fa-solid fa-sun"></i>
-            <br />
-            H:84° L:61°
-          </div>
-          <div class="col">
-            Monday
-            <br />
-            <i class="fa-solid fa-sun"></i>
-            <br />
-            H:87° L:65°
-          </div>
-          <div class="col">
-            Tuesday
-            <br />
-            <i class="fa-solid fa-cloud-sun"></i>
-            <br />
-            H:86° L:66°
-          </div>
-        </div>
-      </div>
-    </div>
+  <div class="weekly-container" id="forecast">
+</div>
     <footer>Coded by Shayne, is <a href="https://github.com/kindamoody/Weather-App">open source on Github</a> and hosted by <a href="https://www.netlify.com/?utm_source=google&utm_medium=paid_search&utm_campaign=12755510784&adgroup=118788138897&utm_term=netlify&utm_content=aud-1291860401722:kwd-392671183196&creative=514583565825&device=c&matchtype=p&location=9026930&gclid=CjwKCAjw8JKbBhBYEiwAs3sxN89yHsbouI97VakbEL50R51uzuPl_Ij9qnElcxUj1xlwKkS5E4B3txoCneMQAvD_BwE">Netlify.</a></footer>
     <script src="src/index.js"></script>
   </body>

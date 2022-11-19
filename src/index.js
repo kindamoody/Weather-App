@@ -1,3 +1,4 @@
+//Time and date
 let now = new Date();
 
 function formatDate(newDate) {
@@ -68,6 +69,7 @@ console.log(formatDate(new Date()));
 let currentDate = document.querySelector("p.date");
 currentDate.innerHTML = formatDate(new Date());
 
+//City search
 function search(city) {
   let apiKey = "a7775f651d2a52140ceaa2d49494f5ca";
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=imperial`;
@@ -83,6 +85,7 @@ function handleSearchCity(event) {
   search(city);
 }
 
+//Temperature information
 function showTemperature(response) {
   console.log(response);
   let currentCity = document.querySelector("#actual-temp");
@@ -113,6 +116,33 @@ function showTemperature(response) {
     .setAttribute("alt", response.data.weather[0].description);
 }
 
+//Moonphase will be here
+
+//Weekly forecast
+function displayForecast() {
+  let forecastElement = document.querySelector("#forecast");
+
+  let forecastHTML = `<div class="row"><h2>5 Day Forecast</h2>`;
+  let days = ["Fri", "Sat", "Sun", "Mon", "Tues", "Wed"];
+  days.forEach(function (day) {
+    forecastHTML =
+      forecastHTML +
+      `
+  <div class="col-2">
+  <div class="weekly-forecast-date">${day}</div>
+  <img src="http://openweathermap.org/img/wn/04d@2x.png" alt="" width="36" />
+  <div class="forecast-temps">
+    <span class="forecast-max">48°</span> <span class="forecast-min">36°</span>
+    </div>
+</div>
+`;
+  });
+
+  forecastHTML = forecastHTML + `</div>`;
+  forecastElement.innerHTML = forecastHTML;
+}
+
+//Location logging
 function logLocation(postion) {
   let apiKey = "a7775f651d2a52140ceaa2d49494f5ca";
   let lat = postion.coords.latitude;
@@ -126,6 +156,7 @@ function getLocation(event) {
   navigator.geolocation.getCurrentPosition(logLocation);
 }
 
+//Units
 function displayCelsiusTemp(event) {
   event.preventDefault();
   let temperatureElement = document.querySelector("#actual-temp");
