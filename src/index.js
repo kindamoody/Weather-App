@@ -92,6 +92,9 @@ function showTemperature(response) {
   fahrenheitTemperature = Math.round(response.data.main.temp);
   currentCity.innerHTML = `${fahrenheitTemperature}`;
 
+  minFahrenheit = response.data.main.temp_min;
+  maxFahrenheit = response.data.main.temp_max;
+
   document.querySelector("#description").innerHTML =
     response.data.weather[0].main;
 
@@ -114,32 +117,79 @@ function showTemperature(response) {
   document
     .querySelector("#condition")
     .setAttribute("alt", response.data.weather[0].description);
+
+  let localDate = new Date();
+  let localOffset = localDate.getTimezoneOffset() * 60000;
+
+  let sunriseInfo = document.querySelector(`#sunrise`);
+  let sunriseUnix = response.data.sys.sunrise * 1000;
+  let sunriseUTC = sunriseUnix + localOffset;
+  let sunriseTime = new Date(sunriseUTC + 1000 * response.data.timezone);
+  let sunriseHours = String(sunriseTime.getHours()).padStart(2, `0`);
+  let sunriseMinutes = String(sunriseTime.getMinutes()).padStart(2, `0`);
+  let sunriseSeconds = String(sunriseTime.getSeconds()).padStart(2, `0`);
+  let sunrise = `${sunriseHours}:${sunriseMinutes}`;
+  sunriseInfo.innerHTML = sunrise;
+
+  let sunsetInfo = document.querySelector(`#sunset`);
+  let sunsetUnix = response.data.sys.sunset * 1000;
+  let sunsetUTC = sunsetUnix + localOffset;
+  let sunsetTime = new Date(sunsetUTC + 1000 * response.data.timezone);
+  let sunsetHours = String(sunsetTime.getHours()).padStart(2, `0`);
+  let sunsetMinutes = String(sunsetTime.getMinutes()).padStart(2, `0`);
+  let sunsetSeconds = String(sunsetTime.getSeconds()).padStart(2, `0`);
+  let sunset = `${sunsetHours}:${sunsetMinutes}`;
+  sunsetInfo.innerHTML = sunset;
+
+  getForecast(response.data.coord);
+}
+//Weekly forecast
+function formatDay(timestamp) {
+  let date = new Date(timestamp * 1000);
+  let day = date.getDay();
+  let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+
+  return days[day];
 }
 
-//Moonphase will be here
+function displayForecast(response) {
+  let forecast = response.data.daily;
 
-//Weekly forecast
-function displayForecast() {
   let forecastElement = document.querySelector("#forecast");
 
-  let forecastHTML = `<div class="row"><h2>5 Day Forecast</h2>`;
-  let days = ["Fri", "Sat", "Sun", "Mon", "Tues", "Wed"];
-  days.forEach(function (day) {
-    forecastHTML =
-      forecastHTML +
-      `
+  let forecastHTML = `<div class="row"><h2>Weekly Forecast</h2>`;
+
+  forecast.forEach(function (forecastDay, index) {
+    if (index < 6) {
+      forecastHTML =
+        forecastHTML +
+        `
   <div class="col-2">
-  <div class="weekly-forecast-date">${day}</div>
-  <img src="http://openweathermap.org/img/wn/04d@2x.png" alt="" width="36" />
+  <div class="weekly-forecast-date">${formatDay(forecastDay.dt)}</div>
+  <img src="http://openweathermap.org/img/wn/${
+    forecastDay.weather[0].icon
+  }@2x.png" alt="" width="36" />
   <div class="forecast-temps">
-    <span class="forecast-max">48°</span> <span class="forecast-min">36°</span>
+    <span class="forecast-max">${Math.round(
+      forecastDay.temp.max
+    )}°</span> <span class="forecast-min">${Math.round(
+          forecastDay.temp.min
+        )}°</span>
     </div>
 </div>
 `;
+    }
   });
 
   forecastHTML = forecastHTML + `</div>`;
   forecastElement.innerHTML = forecastHTML;
+}
+
+function getForecast(coordinates) {
+  console.log(coordinates);
+  let apiKey = "a7775f651d2a52140ceaa2d49494f5ca";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=imperial`;
+  axios.get(apiUrl).then(displayForecast);
 }
 
 //Location logging
@@ -162,15 +212,31 @@ function displayCelsiusTemp(event) {
   let temperatureElement = document.querySelector("#actual-temp");
   let celsiusTemp = (fahrenheitTemperature - 32) * 0.55555555555;
   temperatureElement.innerHTML = Math.round(celsiusTemp);
+
+  let minElement = document.querySelector(`#daily-low`);
+  let minCelsius = (minFahrenheit - 32) * 0.55555555555;
+  minElement.innerHTML = `${Math.round(minCelsius)}`;
+
+  let maxElement = document.querySelector(`#daily-high`);
+  let maxCelsius = (maxFahrenheit - 32) * 0.55555555555;
+  maxElement.innerHTML = `${Math.round(maxCelsius)}`;
 }
 
 function displayFahrenheitTemp(event) {
   event.preventDefault();
   let temperatureElement = document.querySelector("#actual-temp");
   temperatureElement.innerHTML = Math.round(fahrenheitTemperature);
+
+  let minElement = document.querySelector(`#daily-low`);
+  minElement.innerHTML = `${Math.round(minFahrenheit)}`;
+
+  let maxElement = document.querySelector(`#daily-high`);
+  maxElement.innerHTML = `${Math.round(maxFahrenheit)}`;
 }
 
 let fahrenheitTemperature = null;
+let minFahrenheit = null;
+let maxFahrenheit = null;
 
 let searchCity = document.querySelector("#city-search");
 searchCity.addEventListener("submit", handleSearchCity);
