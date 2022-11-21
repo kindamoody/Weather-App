@@ -143,6 +143,7 @@ function showTemperature(response) {
 
   getForecast(response.data.coord);
 }
+
 //Weekly forecast
 function formatDay(timestamp) {
   let date = new Date(timestamp * 1000);
@@ -170,9 +171,9 @@ function displayForecast(response) {
     forecastDay.weather[0].icon
   }@2x.png" alt="" width="36" />
   <div class="forecast-temps">
-    <span class="forecast-max">${Math.round(
+    <span class="forecast-max"><strong>${Math.round(
       forecastDay.temp.max
-    )}°</span> <span class="forecast-min">${Math.round(
+    )}°</strong></span> <span class="forecast-min">${Math.round(
           forecastDay.temp.min
         )}°</span>
     </div>

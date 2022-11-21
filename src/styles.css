@@ -1,11 +1,7 @@
-body {
-  background: linear-gradient(
-    180.3deg,
-    rgb(148, 241, 246) 0%,
-    rgb(148, 189, 246) 45%
-  );
-  background-attachment: fixed;
+* {
   font-family: "Montserrat", sans-serif;
+  background-attachment: fixed;
+  background-size: 100% 100%;
 }
 
 .today-container {
@@ -84,16 +80,6 @@ h2,
 .sun {
   position: fixed;
   top: 165px;
-  right: 20px;
-  text-align: right;
-  font-size: 12px;
-  line-height: 11.5px;
-  font-family: "Spline Sans Mono", monospace;
-}
-
-.moon {
-  position: fixed;
-  top: 200px;
   right: 20px;
   text-align: right;
   font-size: 12px;
