@@ -203,7 +203,6 @@ function logLocation(postion) {
 }
 
 function getLocation(event) {
-  event.preventDefault();
   navigator.geolocation.getCurrentPosition(logLocation);
 }
 

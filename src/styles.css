@@ -1,7 +1,14 @@
 body {
   font-family: "Montserrat", sans-serif;
   background-attachment: fixed;
-  background: linear-gradient(to top, #9890e3 0%, #b1f4cf 100%);
+  background-repeat: no-repeat;
+  background: linear-gradient(
+    180deg,
+    #aabccf 25%,
+    #697aa3 50%,
+    #575067 75%,
+    #3b4359 100%
+  );
 }
 
 .today-container {
@@ -10,7 +17,7 @@ body {
   backdrop-filter: blur(50px);
   box-align: center;
   max-width: 800px;
-  margin-top: 150px;
+  margin-top: 50px;
   padding: 20px;
   background-color: #dedede 50;
   border-radius: 20px;
@@ -70,21 +77,9 @@ h2,
 
 .daily-info {
   margin: 0 auto;
-  -webkit-backdrop-filter: blur(60px);
-  backdrop-filter: blur(50px);
   box-align: center;
   max-width: 800px;
   text-align: center;
-}
-
-.sun {
-  position: fixed;
-  top: 165px;
-  right: 20px;
-  text-align: right;
-  font-size: 12px;
-  line-height: 11.5px;
-  font-family: "Spline Sans Mono", monospace;
 }
 
 #condition {
@@ -136,7 +131,8 @@ form {
 footer {
   text-align: center;
   font-size: 10px;
-  padding: 20px;
+  padding: 50px;
+  color: #aabccf;
 }
 
 #d1,
